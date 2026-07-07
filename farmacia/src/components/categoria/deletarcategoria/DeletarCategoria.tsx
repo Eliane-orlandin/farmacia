@@ -56,7 +56,7 @@ function DeletarCategoria() {
                     Categoria
                 </header>
                 <div className="p-8 bg-slate-50 text-slate-700">
-                    <p className='text-3xl font-medium'>{categoria.descricao}</p>
+                    <p className='text-3xl font-medium'>{categoria.nome}</p>
                 </div>
                 
                 <div className="flex">
