@@ -10,11 +10,11 @@ function Navbar() {
                         Farma Li
                     </Link>
                     
-                    <div className='flex font-medium items-center'>
-                        <Link to='/categorias' className='hover:text-teal-200 transition duration-200'>
-                            Categorias
-                        </Link>
+                    <div className='flex font-medium items-center gap-6'>
+                        <Link to='/categoria' className='hover:underline'>Categorias</Link>
+                        <Link to='/cadastrarcategoria' className='hover:underline'>Cadastrar Categoria</Link>
                     </div>
+
 
                 </div>
             </div>
