@@ -13,6 +13,9 @@ function Navbar() {
                     <div className='flex font-medium items-center gap-6'>
                         <Link to='/categoria' className='hover:underline'>Categorias</Link>
                         <Link to='/cadastrarcategoria' className='hover:underline'>Cadastrar Categoria</Link>
+                        <Link to='/produtos' className='hover:underline'>Produtos</Link>
+                        <Link to='/cadastrarproduto' className='hover:underline'>Cadastrar Produto</Link>
+                    
                     </div>
 
 

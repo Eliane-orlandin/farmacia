@@ -1,4 +1,4 @@
-
+import { Link } from 'react-router-dom'
 import imagemHome from '../../assets/image-home.png'
 
 function Home() {
@@ -61,17 +61,22 @@ function Home() {
                                 gap: "1rem"
                             }}
                         >
-                            <div
+                            {/* 🌟 Tag fechada corretamente com </Link> aqui embaixo */}
+                            <Link
+                                to="/produtos"
                                 style={{
                                     borderRadius: "0.5rem",
                                     color: "white",
                                     border: "2px solid white",
                                     padding: "0.5rem 1rem",
-                                    cursor: "pointer" 
+                                    cursor: "pointer",
+                                    textDecoration: "none", 
+                                    fontWeight: "600",
+                                    transition: "all 0.2s"
                                 }}
                             >
                                 Ver Produtos
-                            </div>
+                            </Link>
                         </div>
                     </div>
 

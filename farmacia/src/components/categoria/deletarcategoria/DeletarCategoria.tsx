@@ -58,15 +58,15 @@ function DeletarCategoria() {
                 <div className="p-8 bg-slate-50 text-slate-700">
                     <p className='text-3xl font-medium'>{categoria.nome}</p>
                 </div>
-                
+
                 <div className="flex">
-                    <button 
+                    <button
                         className='text-slate-100 bg-[#8c223b] hover:bg-[#701329] w-full py-2 font-semibold transition-colors'
                         onClick={retornar}
                     >
                         Não
                     </button>
-                    <button 
+                    <button
                         className='w-full text-slate-100 bg-teal-500 hover:bg-teal-700 flex items-center justify-center py-2 font-semibold transition-colors'
                         onClick={deletarCategoria}
                         disabled={isLoading}

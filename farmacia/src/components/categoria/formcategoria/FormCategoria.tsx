@@ -7,7 +7,6 @@ import { atualizar, buscar, cadastrar } from "../../../services/Service";
 function FormCategoria() {
     const navigate = useNavigate();
 
-    // Inicializa o estado com os campos vazios da Categoria
     const [categoria, setCategoria] = useState<Categoria>({
         id: 0,
         nome: '',
@@ -18,7 +17,6 @@ function FormCategoria() {
 
     const { id } = useParams<{ id: string }>();
 
-    // Busca a categoria por ID caso seja uma edição
     async function buscarPorId(id: string) {
         try {
             await buscar(`/categorias/${id}`, setCategoria);
@@ -35,7 +33,6 @@ function FormCategoria() {
         }
     }, [id]);
 
-    // Atualiza o estado conforme o usuário digita nos inputs
     function atualizarEstado(e: ChangeEvent<HTMLInputElement>) {
         setCategoria({
             ...categoria,
@@ -47,13 +44,12 @@ function FormCategoria() {
         navigate("/categoria");
     }
 
-    // Salva ou atualiza a categoria
-    async function salvarCategoria(e: FormEvent<HTMLFormElement>) {
+   async function salvarCategoria(e: FormEvent<HTMLFormElement>) {
         e.preventDefault();
         setIsLoading(true);
 
         if (id !== undefined) {
-            // Edição
+
             try {
                 await atualizar(`/categorias`, categoria, setCategoria);
                 alert('A Categoria foi atualizada com sucesso!');
@@ -62,7 +58,6 @@ function FormCategoria() {
                 alert('Erro ao atualizar a categoria.');
             }
         } else {
-            // Cadastro Novo
             try {
                 await cadastrar(`/categorias`, categoria, setCategoria);
                 alert('A Categoria foi cadastrada com sucesso!');
