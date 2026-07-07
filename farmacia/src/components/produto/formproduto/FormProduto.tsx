@@ -4,6 +4,7 @@ import { ClipLoader } from "react-spinners";
 import type { Categoria } from "../../../models/Categoria";
 import type Produto from "../../../models/Produto";
 import { atualizar, buscar, cadastrar } from "../../../services/Service";
+import { ToastAlerta } from "../../../utils/ToastAlerta";
 
 function FormProduto() {
     const navigate = useNavigate();
@@ -43,7 +44,7 @@ function FormProduto() {
             await buscar(`/produtos/${id}`, setProduto);
         } catch (error: any) {
             console.error("Erro ao buscar produto por id:", error);
-            alert('Produto não encontrado.');
+            ToastAlerta('Produto não encontrado.', 'erro');
             retornar();
         }
     }
@@ -87,19 +88,19 @@ function FormProduto() {
 
             try {
                 await atualizar(`/produtos`, produtoParaEnviar, setProduto);
-                alert('O Produto foi atualizado com sucesso!');
+                ToastAlerta('O Produto foi atualizado com sucesso!', 'sucesso');
             } catch (error: any) {
                 console.error("Erro ao atualizar o produto:", error);
-                alert('Erro ao atualizar o produto.');
+                ToastAlerta('Erro ao atualizar o produto.', 'erro');
             }
         } else {
 
             try {
                 await cadastrar(`/produtos`, produtoParaEnviar, setProduto);
-                alert('O Produto foi cadastrado com sucesso!');
+                ToastAlerta('O Produto foi cadastrado com sucesso!', 'sucesso');
             } catch (error: any) {
                 console.error("Erro ao cadastrar o produto:", error);
-                alert('Erro ao cadastrar o produto.');
+                ToastAlerta('Erro ao cadastrar o produto.', 'erro');
             }
         }
 

@@ -3,6 +3,7 @@ import type Produto from "../../../models/Produto"; // Ajuste o caminho se neces
 import { SyncLoader } from "react-spinners";
 import { buscar } from "../../../services/Service";
 import CardProduto from "../cardproduto/CardProduto";
+import { ToastAlerta } from "../../../utils/ToastAlerta";
 
 function ListaProdutos() {
     
@@ -16,7 +17,7 @@ function ListaProdutos() {
             await buscar('/produtos', setProdutos); 
         } catch (error: any) {
             console.error("Erro ao buscar os produtos:", error);
-            alert("Não foi possível carregar os produtos.");
+            ToastAlerta("Não foi possível carregar os produtos.", "erro");
         } finally {
             setIsLoading(false);
         }

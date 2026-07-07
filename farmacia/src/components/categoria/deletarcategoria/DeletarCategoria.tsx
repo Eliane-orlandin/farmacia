@@ -3,6 +3,7 @@ import { useNavigate, useParams } from "react-router-dom"
 import type { Categoria } from "../../../models/Categoria"
 import { buscar, deletar } from "../../../services/Service"
 import { SyncLoader } from "react-spinners"
+import { ToastAlerta } from "../../../utils/ToastAlerta"
 
 function DeletarCategoria() {
     const [categoria, setCategoria] = useState<Categoria>({} as Categoria)
@@ -16,7 +17,7 @@ function DeletarCategoria() {
             await buscar(`/categorias/${id}`, setCategoria)
         } catch (error) {
             console.error("Erro ao buscar categoria", error)
-            alert("Erro ao encontrar a categoria.")
+            ToastAlerta("Erro ao encontrar a categoria.", "erro")
         }
     }
 
@@ -34,10 +35,10 @@ function DeletarCategoria() {
         setIsLoading(true)
         try {
             await deletar(`/categorias/${id}`)
-            alert("Categoria apagada com sucesso!")
+            ToastAlerta("Categoria apagada com sucesso!", "sucesso")
         } catch (error) {
             console.error("Erro ao deletar categoria", error)
-            alert("Erro ao apagar a categoria.")
+            ToastAlerta("Erro ao apagar a categoria.", "erro")
         } finally {
             setIsLoading(false)
             retornar()

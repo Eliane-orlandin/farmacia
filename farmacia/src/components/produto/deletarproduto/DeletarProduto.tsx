@@ -3,6 +3,7 @@ import { useNavigate, useParams } from "react-router-dom"
 import type Produto from "../../../models/Produto" // Ajuste o caminho se necessário
 import { buscar, deletar } from "../../../services/Service"
 import { SyncLoader } from "react-spinners"
+import { ToastAlerta } from "../../../utils/ToastAlerta"
 
 function DeletarProduto() {
     const [produto, setProduto] = useState<Produto>({} as Produto)
@@ -16,7 +17,7 @@ function DeletarProduto() {
             await buscar(`/produtos/${id}`, setProduto)
         } catch (error) {
             console.error("Erro ao buscar produto", error)
-            alert("Erro ao encontrar o produto.")
+            ToastAlerta("Erro ao encontrar o produto.", "erro")
             retornar()
         }
     }
@@ -35,10 +36,10 @@ function DeletarProduto() {
         setIsLoading(true)
         try {
             await deletar(`/produtos/${id}`)
-            alert("Produto apagado com sucesso!")
+            ToastAlerta("Produto apagado com sucesso!", "sucesso")
         } catch (error) {
             console.error("Erro ao deletar produto", error)
-            alert("Erro ao apagar o produto.")
+            ToastAlerta("Erro ao apagar o produto.", "erro")
         } finally {
             setIsLoading(false)
             retornar()
@@ -53,14 +54,14 @@ function DeletarProduto() {
             </p>
 
             <div className='border border-teal-600 flex flex-col rounded-2xl overflow-hidden justify-between shadow-md bg-white'>
-                
+
                 <header className='py-3 px-6 bg-teal-800 text-white font-bold text-xl uppercase tracking-wider flex justify-between items-center'>
                     <span>Produto</span>
                     <span className='text-xs bg-teal-600 px-2 py-1 rounded font-semibold'>
                         {produto.laboratorio}
                     </span>
                 </header>
-                            
+
                 <div className="p-8 bg-slate-50 text-slate-700 flex flex-col gap-2">
                     <p className='text-3xl font-bold uppercase text-slate-800'>{produto.nome}</p>
                     <p className='text-sm text-slate-500 italic'>{produto.descricao}</p>
