@@ -2,6 +2,8 @@
 
 O **Farma Li** é uma aplicação web desenvolvida em React, TypeScript e Tailwind CSS que funciona como o painel de gerenciamento para uma farmácia. O projeto conta com rotas para navegação e integração com uma API backend para a realização do CRUD completo de **Categorias** de produtos.
 
+![Farmácia](farmacia/src/assets/farma-li.png)
+
 ---
 
 ## 🛠️ Tecnologias Utilizadas
